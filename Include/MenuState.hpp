@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOOK_MENUSTATE_HPP
+#define BOOK_MENUSTATE_HPP
 
 #include "State.hpp"
 #include "Container.hpp"
@@ -22,3 +23,4 @@ class MenuState : public State
 		GUI::Container			mGUIContainer;
 };
 
+#endif // BOOK_MENUSTATE_HPP

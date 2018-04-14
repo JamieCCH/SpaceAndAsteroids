@@ -6,10 +6,6 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/View.hpp>
 
-#pragma region step 4
-#include "Include/SettingsState.hpp"
-#pragma endregion
-
 
 MenuState::MenuState(StateStack& stack, Context context)
 : State(stack, context)
@@ -27,15 +23,13 @@ MenuState::MenuState(StateStack& stack, Context context)
 		requestStackPush(States::Game);
 	});
 
-#pragma region step 5
 	auto settingsButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
 	settingsButton->setPosition(650, 460);
 	settingsButton->setText("Settings");
-	settingsButton->setCallback([this]()
+	settingsButton->setCallback([this] ()
 	{
 		requestStackPush(States::Settings);
 	});
-#pragma endregion
 
 	auto exitButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
 	exitButton->setPosition(650, 570);
@@ -46,11 +40,7 @@ MenuState::MenuState(StateStack& stack, Context context)
 	});
 
 	mGUIContainer.pack(playButton);
-
-#pragma region step 6
 	mGUIContainer.pack(settingsButton);
-#pragma endregion
-
 	mGUIContainer.pack(exitButton);
 }
 

@@ -1,5 +1,3 @@
-#include "ResourcePath.hpp"
-
 #include "Include/Application.hpp"
 #include "Include/Utility.hpp"
 #include "Include/State.hpp"
@@ -9,12 +7,15 @@
 #include "Include/MenuState.hpp"
 #include "Include/PauseState.hpp"
 #include "Include/SettingsState.hpp"
+#include "Include/GameOverState.hpp"
+
+#include "ResourcePath.hpp"
 
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application()
-: mWindow(sf::VideoMode(1024, 768), "Menus", sf::Style::Close)
+: mWindow(sf::VideoMode(1024, 768), "Gameplay", sf::Style::Close)
 , mTextures()
 , mFonts()
 , mPlayer()
@@ -25,12 +26,10 @@ Application::Application()
 {
 	mWindow.setKeyRepeatEnabled(false);
 
-	mFonts.load(Fonts::Main, resourcePath()+"Media/Sansation.ttf");
+	mFonts.load(Fonts::Main, 	resourcePath()+"Media/Sansation.ttf");
 
 	mTextures.load(Textures::TitleScreen, resourcePath()+"Media/Textures/Title.png");
-	mTextures.load(Textures::ButtonNormal, resourcePath()+"Media/Textures/button_normal.png");
-	mTextures.load(Textures::ButtonSelected,resourcePath()+"Media/Textures/button_selected.png");
-	mTextures.load(Textures::ButtonPressed,	resourcePath()+"Media/Textures/button_pressed.png");
+	mTextures.load(Textures::Buttons, resourcePath()+"Media/Textures/Buttons.png");
 
 	mStatisticsText.setFont(mFonts.get(Fonts::Main));
 	mStatisticsText.setPosition(5.f, 5.f);
@@ -115,4 +114,5 @@ void Application::registerStates()
 	mStateStack.registerState<GameState>(States::Game);
 	mStateStack.registerState<PauseState>(States::Pause);
 	mStateStack.registerState<SettingsState>(States::Settings);
+	mStateStack.registerState<GameOverState>(States::GameOver);
 }

@@ -22,6 +22,8 @@ PauseState::PauseState(StateStack& stack, Context context)
 	mPausedText.setCharacterSize(70);
 	centerOrigin(mPausedText);
 	mPausedText.setPosition(0.5f * windowSize.x, 0.4f * windowSize.y);
+    mPausedText.setFillColor(sf::Color(255, 230, 155));
+    mPausedText.setStyle(sf::Text::Bold);
 
 	auto returnButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
 	returnButton->setPosition(0.5f * windowSize.x - 175, 0.4f * windowSize.y + 75);
@@ -50,7 +52,7 @@ void PauseState::draw()
 	window.setView(window.getDefaultView());
 
 	sf::RectangleShape backgroundShape;
-	backgroundShape.setFillColor(sf::Color(0, 0, 0, 150));
+	backgroundShape.setFillColor(sf::Color(0, 0, 0, 200));
 	backgroundShape.setSize(window.getView().getSize());
 
 	window.draw(backgroundShape);

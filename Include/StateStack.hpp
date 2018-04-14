@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOOK_STATESTACK_HPP
+#define BOOK_STATESTACK_HPP
 
 #include "State.hpp"
 #include "StateIdentifiers.hpp"
@@ -80,5 +81,4 @@ void StateStack::registerState(States::ID stateID)
 	};
 }
 
-
-
+#endif // BOOK_STATESTACK_HPP

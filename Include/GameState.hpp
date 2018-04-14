@@ -1,5 +1,4 @@
-#ifndef BOOK_GAMESTATE_HPP
-#define BOOK_GAMESTATE_HPP
+#pragma once
 
 #include "State.hpp"
 #include "World.hpp"
@@ -24,4 +23,3 @@ class GameState : public State
 		Player&				mPlayer;
 };
 
-#endif // BOOK_GAMESTATE_HPP

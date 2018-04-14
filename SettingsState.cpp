@@ -3,7 +3,7 @@
 #include "Include/ResourceHolder.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
-
+#include <SFML/Graphics/RectangleShape.hpp>
 
 SettingsState::SettingsState(StateStack& stack, Context context)
 : State(stack, context)
@@ -12,15 +12,17 @@ SettingsState::SettingsState(StateStack& stack, Context context)
 	mBackgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
 	
 	// Build key binding buttons and labels
-	addButtonLabel(Player::MoveLeft,  150.f, "Move Left", context);
-	addButtonLabel(Player::MoveRight, 200.f, "Move Right", context);
-	addButtonLabel(Player::MoveUp,    250.f, "Move Up", context);
-	addButtonLabel(Player::MoveDown,  300.f, "Move Down", context);
+	addButtonLabel(Player::MoveLeft,		30.f, "Move Left", context);
+	addButtonLabel(Player::MoveRight,		130.f, "Move Right", context);
+	addButtonLabel(Player::MoveUp,			230.f, "Move Up", context);
+	addButtonLabel(Player::MoveDown,		330.f, "Move Down", context);
+	addButtonLabel(Player::Fire,			430.f, "Fire", context);
+	addButtonLabel(Player::LaunchMissile,	530.f, "Missile", context);
 
 	updateLabels();
 
 	auto backButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
-	backButton->setPosition(80.f, 375.f);
+	backButton->setPosition(650.f, 655.f);
 	backButton->setText("Back");
 	backButton->setCallback(std::bind(&SettingsState::requestStackPop, this));
 
@@ -30,8 +32,15 @@ SettingsState::SettingsState(StateStack& stack, Context context)
 void SettingsState::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
-
-	window.draw(mBackgroundSprite);
+    
+    window.draw(mBackgroundSprite);
+ 
+    sf::RectangleShape filter;
+    filter.setSize(window.getView().getSize());
+    filter.setFillColor(sf::Color(0, 0, 0, 200));
+    window.draw(filter);
+    
+	
 	window.draw(mGUIContainer);
 }
 
@@ -82,15 +91,13 @@ void SettingsState::updateLabels()
 void SettingsState::addButtonLabel(Player::Action action, float y, const std::string& text, Context context)
 {
 	mBindingButtons[action] = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
-	mBindingButtons[action]->setPosition(80.f, y);
+	mBindingButtons[action]->setPosition(650.f, y);
 	mBindingButtons[action]->setText(text);
 	mBindingButtons[action]->setToggle(true);
 
 	mBindingLabels[action] = std::make_shared<GUI::Label>("", *context.fonts);
-	mBindingLabels[action]->setPosition(300.f, y + 15.f);
+	mBindingLabels[action]->setPosition(550.f, y + 15.f);
 
 	mGUIContainer.pack(mBindingButtons[action]);
 	mGUIContainer.pack(mBindingLabels[action]);
 }
-
-#pragma endregion

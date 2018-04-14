@@ -3,7 +3,7 @@
 #include "Include/ResourceHolder.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <iostream>
+
 
 TitleState::TitleState(StateStack& stack, Context context)
 : State(stack, context)
@@ -16,13 +16,21 @@ TitleState::TitleState(StateStack& stack, Context context)
 	mText.setFont(context.fonts->get(Fonts::Main));
 	mText.setString("Press any key to start");
 	centerOrigin(mText);
-    mText.setPosition(sf::Vector2f(context.window->getSize() / 2u));
+//    mText.setPosition(sf::Vector2f(context.window->getSize() / 2u));
+    mText.setPosition(context.window->getSize().x/2.f - mText.getLocalBounds().width/2.f, context.window->getSize().y/2.f - mText.getLocalBounds().height/2.f);
+    mText.setCharacterSize(65);
+    mText.setFillColor(sf::Color(255, 230, 155));
 }
 
 void TitleState::draw()
 {
 	sf::RenderWindow& window = *getContext().window;
 	window.draw(mBackgroundSprite);
+    
+    sf::RectangleShape filter;
+    filter.setSize(window.getView().getSize());
+    filter.setFillColor(sf::Color(0, 0, 0, 200));
+    window.draw(filter);
 
 	if (mShowText)
 		window.draw(mText);

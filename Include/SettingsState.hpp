@@ -1,5 +1,5 @@
-#pragma region step 2
-#pragma once
+#ifndef BOOK_SETTINGSSTATE_HPP
+#define BOOK_SETTINGSSTATE_HPP
 
 #include "State.hpp"
 #include "Player.hpp"
@@ -35,5 +35,4 @@ class SettingsState : public State
 		std::array<GUI::Label::Ptr, Player::ActionCount> 	mBindingLabels;
 };
 
-#pragma endregion
-
+#endif // BOOK_SETTINGSSTATE_HPP

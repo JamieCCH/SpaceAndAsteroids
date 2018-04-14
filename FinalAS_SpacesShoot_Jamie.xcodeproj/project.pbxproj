@@ -23,6 +23,10 @@
 		7D910045206311D7006025D8 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D910044206311D7006025D8 /* Command.cpp */; };
 		7D910049206314EA006025D8 /* CommandQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D910048206314EA006025D8 /* CommandQueue.cpp */; };
 		7D91004C206363C8006025D8 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D91004B206363C8006025D8 /* Player.cpp */; };
+		7DAAC8032081E9D000FC2E46 /* EmitterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC7FF2081E9CF00FC2E46 /* EmitterNode.cpp */; };
+		7DAAC8042081E9D000FC2E46 /* GameOverState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC8002081E9CF00FC2E46 /* GameOverState.cpp */; };
+		7DAAC8052081E9D000FC2E46 /* ParticleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC8012081E9D000FC2E46 /* ParticleNode.cpp */; };
+		7DAAC8062081E9D000FC2E46 /* Pickup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC8022081E9D000FC2E46 /* Pickup.cpp */; };
 		7DC48D622050AC19008EC9D7 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC48D612050AC19008EC9D7 /* SceneNode.cpp */; };
 		7DC48D652050B76F008EC9D7 /* Aircraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC48D642050B76F008EC9D7 /* Aircraft.cpp */; };
 		7DC48D682050BAA0008EC9D7 /* SpriteNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC48D672050BAA0008EC9D7 /* SpriteNode.cpp */; };
@@ -45,7 +49,7 @@
 		7D2662DE207C0F8A00371510 /* ParallelTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParallelTask.cpp; sourceTree = "<group>"; };
 		7D2662DF207C0F8A00371510 /* PauseState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseState.cpp; sourceTree = "<group>"; };
 		7D3F6A6A207C44EC009DE5A3 /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
-		7D3F6A6B207C44EC009DE5A3 /* FinalAS_SpaceshipAndAsteroids_Jamie-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FinalAS_SpaceshipAndAsteroids_Jamie-Info.plist"; sourceTree = "<group>"; };
+		7D3F6A6B207C44EC009DE5A3 /* FinalAS_SpacesShoot_Jamie-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FinalAS_SpacesShoot_Jamie-Info.plist"; sourceTree = "<group>"; };
 		7D3F6A6C207C44EC009DE5A3 /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		7D3F6A7A207C70B6009DE5A3 /* SettingsState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SettingsState.cpp; sourceTree = "<group>"; };
 		7D472037207E9B7600E14162 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = SOURCE_ROOT; };
@@ -53,12 +57,16 @@
 		7D47203F207EB4D700E14162 /* DataTables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataTables.cpp; sourceTree = "<group>"; };
 		7D472041207ECCC700E14162 /* Projectile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Projectile.cpp; sourceTree = "<group>"; };
 		7D687EC4203E3B6900E8D8A4 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
-		7D7FD46D202CE0DA00D63E75 /* FinalAS_SpaceshipAndAsteroids_Jamie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalAS_SpaceshipAndAsteroids_Jamie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D7FD46D202CE0DA00D63E75 /* FinalAS_SpacesShoot_Jamie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalAS_SpacesShoot_Jamie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7FD488202CE15800D63E75 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		7D910040206304E7006025D8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		7D910044206311D7006025D8 /* Command.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
 		7D910048206314EA006025D8 /* CommandQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CommandQueue.cpp; sourceTree = "<group>"; };
 		7D91004B206363C8006025D8 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		7DAAC7FF2081E9CF00FC2E46 /* EmitterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmitterNode.cpp; sourceTree = "<group>"; };
+		7DAAC8002081E9CF00FC2E46 /* GameOverState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverState.cpp; sourceTree = "<group>"; };
+		7DAAC8012081E9D000FC2E46 /* ParticleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleNode.cpp; sourceTree = "<group>"; };
+		7DAAC8022081E9D000FC2E46 /* Pickup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pickup.cpp; sourceTree = "<group>"; };
 		7DC48D612050AC19008EC9D7 /* SceneNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneNode.cpp; sourceTree = "<group>"; };
 		7DC48D642050B76F008EC9D7 /* Aircraft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Aircraft.cpp; sourceTree = "<group>"; };
 		7DC48D672050BAA0008EC9D7 /* SpriteNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteNode.cpp; sourceTree = "<group>"; };
@@ -91,7 +99,7 @@
 			children = (
 				7D472037207E9B7600E14162 /* Media */,
 				7D3F6A6A207C44EC009DE5A3 /* ResourcePath.hpp */,
-				7D3F6A6B207C44EC009DE5A3 /* FinalAS_SpaceshipAndAsteroids_Jamie-Info.plist */,
+				7D3F6A6B207C44EC009DE5A3 /* FinalAS_SpacesShoot_Jamie-Info.plist */,
 				7D3F6A6C207C44EC009DE5A3 /* ResourcePath.mm */,
 			);
 			path = FinalAS;
@@ -100,10 +108,7 @@
 		7D7FD463202CE0DA00D63E75 = {
 			isa = PBXGroup;
 			children = (
-				7D472041207ECCC700E14162 /* Projectile.cpp */,
-				7D47203F207EB4D700E14162 /* DataTables.cpp */,
-				7D47203D207EB23E00E14162 /* TextNode.cpp */,
-				7D3F6A7A207C70B6009DE5A3 /* SettingsState.cpp */,
+				7DD03AE4207F011700C41017 /* Include */,
 				7DC48D642050B76F008EC9D7 /* Aircraft.cpp */,
 				7D2662DB207C0C9300371510 /* Application.cpp */,
 				7DFB2D83207C264000879D41 /* Button.cpp */,
@@ -111,32 +116,39 @@
 				7D910048206314EA006025D8 /* CommandQueue.cpp */,
 				7DFB2D7D207C258900879D41 /* Component.cpp */,
 				7DFB2D7E207C258900879D41 /* Container.cpp */,
+				7D47203F207EB4D700E14162 /* DataTables.cpp */,
+				7DAAC7FF2081E9CF00FC2E46 /* EmitterNode.cpp */,
 				7D687EC4203E3B6900E8D8A4 /* Entity.cpp */,
+				7DAAC8002081E9CF00FC2E46 /* GameOverState.cpp */,
 				7DFFA07E206C562700FE5FF7 /* GameState.cpp */,
 				7DFB2D7F207C258A00879D41 /* Label.cpp */,
 				7D2662DD207C0F8A00371510 /* LoadingState.cpp */,
 				7D7FD488202CE15800D63E75 /* main.cpp */,
 				7DFFA07A206C52AB00FE5FF7 /* MenuState.cpp */,
 				7D2662DE207C0F8A00371510 /* ParallelTask.cpp */,
+				7DAAC8012081E9D000FC2E46 /* ParticleNode.cpp */,
 				7D2662DF207C0F8A00371510 /* PauseState.cpp */,
+				7DAAC8022081E9D000FC2E46 /* Pickup.cpp */,
 				7D91004B206363C8006025D8 /* Player.cpp */,
+				7D472041207ECCC700E14162 /* Projectile.cpp */,
 				7DC48D612050AC19008EC9D7 /* SceneNode.cpp */,
+				7D3F6A7A207C70B6009DE5A3 /* SettingsState.cpp */,
 				7DC48D672050BAA0008EC9D7 /* SpriteNode.cpp */,
 				7DFFA06F206C42B700FE5FF7 /* State.cpp */,
 				7DFFA072206C44DE00FE5FF7 /* StateStack.cpp */,
+				7D47203D207EB23E00E14162 /* TextNode.cpp */,
 				7DFFA075206C469E00FE5FF7 /* TitleState.cpp */,
 				7DFFA07C206C537200FE5FF7 /* Utility.cpp */,
 				7D910040206304E7006025D8 /* World.cpp */,
-				7DD03AE4207F011700C41017 /* Include */,
-				7D7FD46E202CE0DA00D63E75 /* Products */,
 				7D3F6A69207C44EB009DE5A3 /* FinalAS */,
+				7D7FD46E202CE0DA00D63E75 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 		7D7FD46E202CE0DA00D63E75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D7FD46D202CE0DA00D63E75 /* FinalAS_SpaceshipAndAsteroids_Jamie.app */,
+				7D7FD46D202CE0DA00D63E75 /* FinalAS_SpacesShoot_Jamie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7D7FD46C202CE0DA00D63E75 /* FinalAS_SpaceshipAndAsteroids_Jamie */ = {
+		7D7FD46C202CE0DA00D63E75 /* FinalAS_SpacesShoot_Jamie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D7FD482202CE0DA00D63E75 /* Build configuration list for PBXNativeTarget "FinalAS_SpaceshipAndAsteroids_Jamie" */;
+			buildConfigurationList = 7D7FD482202CE0DA00D63E75 /* Build configuration list for PBXNativeTarget "FinalAS_SpacesShoot_Jamie" */;
 			buildPhases = (
 				7D7FD468202CE0DA00D63E75 /* Sources */,
 				7D7FD469202CE0DA00D63E75 /* Frameworks */,
@@ -157,9 +169,9 @@
 			);
 			dependencies = (
 			);
-			name = FinalAS_SpaceshipAndAsteroids_Jamie;
+			name = FinalAS_SpacesShoot_Jamie;
 			productName = w2;
-			productReference = 7D7FD46D202CE0DA00D63E75 /* FinalAS_SpaceshipAndAsteroids_Jamie.app */;
+			productReference = 7D7FD46D202CE0DA00D63E75 /* FinalAS_SpacesShoot_Jamie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -177,7 +189,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7D7FD467202CE0DA00D63E75 /* Build configuration list for PBXProject "FinalAS_SpaceshipAndAsteroids_Jamie" */;
+			buildConfigurationList = 7D7FD467202CE0DA00D63E75 /* Build configuration list for PBXProject "FinalAS_SpacesShoot_Jamie" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -189,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D7FD46C202CE0DA00D63E75 /* FinalAS_SpaceshipAndAsteroids_Jamie */,
+				7D7FD46C202CE0DA00D63E75 /* FinalAS_SpacesShoot_Jamie */,
 			);
 		};
 /* End PBXProject section */
@@ -228,11 +240,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D47203E207EB23F00E14162 /* TextNode.cpp in Sources */,
+				7DAAC8032081E9D000FC2E46 /* EmitterNode.cpp in Sources */,
 				7DFB2D84207C264100879D41 /* Button.cpp in Sources */,
 				7DFFA07D206C537200FE5FF7 /* Utility.cpp in Sources */,
 				7DFFA076206C469E00FE5FF7 /* TitleState.cpp in Sources */,
 				7D2662DC207C0C9300371510 /* Application.cpp in Sources */,
 				7DFB2D81207C258A00879D41 /* Container.cpp in Sources */,
+				7DAAC8062081E9D000FC2E46 /* Pickup.cpp in Sources */,
 				7DFFA07F206C562800FE5FF7 /* GameState.cpp in Sources */,
 				7D910045206311D7006025D8 /* Command.cpp in Sources */,
 				7D3F6A7B207C70B7009DE5A3 /* SettingsState.cpp in Sources */,
@@ -245,9 +259,11 @@
 				7D687EC5203E3B6900E8D8A4 /* Entity.cpp in Sources */,
 				7DFB2D80207C258A00879D41 /* Component.cpp in Sources */,
 				7DFFA073206C44DE00FE5FF7 /* StateStack.cpp in Sources */,
+				7DAAC8042081E9D000FC2E46 /* GameOverState.cpp in Sources */,
 				7DC48D682050BAA0008EC9D7 /* SpriteNode.cpp in Sources */,
 				7D3F6A6E207C44EC009DE5A3 /* ResourcePath.mm in Sources */,
 				7D472042207ECCC700E14162 /* Projectile.cpp in Sources */,
+				7DAAC8052081E9D000FC2E46 /* ParticleNode.cpp in Sources */,
 				7DC48D652050B76F008EC9D7 /* Aircraft.cpp in Sources */,
 				7DFB2D82207C258A00879D41 /* Label.cpp in Sources */,
 				7D910049206314EA006025D8 /* CommandQueue.cpp in Sources */,
@@ -271,6 +287,7 @@
 					/Library/Frameworks/,
 					"$(inherited)",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
@@ -354,7 +371,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZA3E69YCZ2;
-				INFOPLIST_FILE = "FinalAS/FinalAS_SpaceshipAndAsteroids_Jamie-Info.plist";
+				INFOPLIST_FILE = "FinalAS/FinalAS_SpacesShoot_Jamie-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -365,7 +382,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZA3E69YCZ2;
-				INFOPLIST_FILE = "FinalAS/FinalAS_SpaceshipAndAsteroids_Jamie-Info.plist";
+				INFOPLIST_FILE = "FinalAS/FinalAS_SpacesShoot_Jamie-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -374,7 +391,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7D7FD467202CE0DA00D63E75 /* Build configuration list for PBXProject "FinalAS_SpaceshipAndAsteroids_Jamie" */ = {
+		7D7FD467202CE0DA00D63E75 /* Build configuration list for PBXProject "FinalAS_SpacesShoot_Jamie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D7FD480202CE0DA00D63E75 /* Debug */,
@@ -383,7 +400,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D7FD482202CE0DA00D63E75 /* Build configuration list for PBXNativeTarget "FinalAS_SpaceshipAndAsteroids_Jamie" */ = {
+		7D7FD482202CE0DA00D63E75 /* Build configuration list for PBXNativeTarget "FinalAS_SpacesShoot_Jamie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D7FD483202CE0DA00D63E75 /* Debug */,

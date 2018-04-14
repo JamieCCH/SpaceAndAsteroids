@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOOK_CONTAINER_HPP
+#define BOOK_CONTAINER_HPP
 
 #include "Component.hpp"
 
@@ -40,3 +41,4 @@ class Container : public Component
 
 }
 
+#endif // BOOK_CONTAINER_HPP

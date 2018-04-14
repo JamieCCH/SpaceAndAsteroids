@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BOOK_RESOURCEIDENTIFIERS_HPP
+#define BOOK_RESOURCEIDENTIFIERS_HPP
+
 
 // Forward declaration of SFML classes
 namespace sf
@@ -11,22 +13,14 @@ namespace Textures
 {
 	enum ID
 	{
-		Eagle,
-		Raptor,
-		Desert,
-        
-        Avenger,
-        Bullet,
-        Missile,
-        HealthRefill,
-        MissileRefill,
-        FireSpread,
-        FireRate,
-        
+		Entities,
+		Space,
 		TitleScreen,
-		ButtonNormal,
-		ButtonSelected,
-		ButtonPressed
+		Buttons,
+        
+		Explosion,
+		Particle,
+		FinishLine,
 	};
 }
 
@@ -45,3 +39,4 @@ class ResourceHolder;
 typedef ResourceHolder<sf::Texture, Textures::ID>	TextureHolder;
 typedef ResourceHolder<sf::Font, Fonts::ID>			FontHolder;
 
+#endif // BOOK_RESOURCEIDENTIFIERS_HPP

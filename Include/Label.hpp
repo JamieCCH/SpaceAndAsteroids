@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOOK_LABEL_HPP
+#define BOOK_LABEL_HPP
 
 #include "Component.hpp"
 #include "ResourceIdentifiers.hpp"
@@ -21,7 +22,7 @@ class Label : public Component
 
         virtual bool		isSelectable() const;
 		void				setText(const std::string& text);
-		sf::Text&			getText();
+
         virtual void		handleEvent(const sf::Event& event);
 
 
@@ -35,3 +36,4 @@ class Label : public Component
 
 }
 
+#endif // BOOK_LABEL_HPP

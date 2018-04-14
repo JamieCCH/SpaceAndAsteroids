@@ -1,5 +1,4 @@
-#ifndef BOOK_WORLD_HPP
-#define BOOK_WORLD_HPP
+#pragma once
 
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
@@ -32,41 +31,58 @@ class World : private sf::NonCopyable
 		
 		CommandQueue&						getCommandQueue();
 
+		bool 								hasAlivePlayer() const;
+		bool 								hasPlayerReachedEnd() const;
+
 
 	private:
 		void								loadTextures();
-		void								buildScene();
 		void								adaptPlayerPosition();
 		void								adaptPlayerVelocity();
+		void								handleCollisions();
+		
+		void								buildScene();
+		void								addEnemies();
+		void								addEnemy(Aircraft::Type type, float relX, float relY);
+		void								spawnEnemies();
+		void								destroyEntitiesOutsideView();
+		void								guideMissiles();
+		sf::FloatRect						getViewBounds() const;
+		sf::FloatRect						getBattlefieldBounds() const;
 
 
 	private:
 		enum Layer
 		{
 			Background,
-			Air,
+#pragma region step 12
+			//Air,
+			LowerAir,
+			UpperAir,
+#pragma endregion
 			LayerCount
 		};
-    
-        struct SpawnPoint
-        {
-            SpawnPoint(Aircraft::Type type, float x, float y)
-            : type(type)
-            , x(x)
-            , y(y)
-            {
-            }
-            
-            Aircraft::Type type;
-            float x;
-            float y;
-        };
+
+		struct SpawnPoint 
+		{
+			SpawnPoint(Aircraft::Type type, float x, float y)
+			: type(type)
+			, x(x)
+			, y(y)
+			{
+			}
+
+			Aircraft::Type type;
+			float x;
+			float y;
+		};
 
 
 	private:
 		sf::RenderWindow&					mWindow;
 		sf::View							mWorldView;
 		TextureHolder						mTextures;
+		FontHolder&							mFonts;
 
 		SceneNode							mSceneGraph;
 		std::array<SceneNode*, LayerCount>	mSceneLayers;
@@ -76,23 +92,9 @@ class World : private sf::NonCopyable
 		sf::Vector2f						mSpawnPosition;
 		float								mScrollSpeed;
 		Aircraft*							mPlayerAircraft;
-        FontHolder&                         mFonts;
-    
-    
-        //Hold all future spawn points. As soon as enemy enters the battlefield,
-        //enemy is created and inserted to the scene graph and the spwan point is removed.
-        std::vector<SpawnPoint>             mEnemySpawnPoints;
-    
-        //Battlefield area extends the view area by a small rectangle at the top,
-        //inside which the new enemies spawn before they enter the view
-        sf::FloatRect                       getViewBounds() const;
-        sf::FloatRect                       getBattlefieldBounds() const;
-    
-        void                                spawnEnemies();
-    
-        std::vector<Aircraft*>              mActiveEnemies;
-        void                                addEnemies();
-        void                                addEnemy(Aircraft::Type type, float relX, float relY);
+
+		std::vector<SpawnPoint>				mEnemySpawnPoints;
+		std::vector<Aircraft*>				mActiveEnemies;
 };
 
-#endif // BOOK_WORLD_HPP
+

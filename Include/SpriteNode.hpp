@@ -6,7 +6,6 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 
-
 class SpriteNode : public SceneNode
 {
 	public:

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BOOK_STATEIDENTIFIERS_HPP
+#define BOOK_STATEIDENTIFIERS_HPP
+
 
 namespace States
 {
@@ -10,9 +12,9 @@ namespace States
 		Game,
 		Loading,
 		Pause,
-#pragma region step 1
-		Settings
-#pragma endregion		
+		Settings,
+		GameOver
 	};
 }
 
+#endif // BOOK_STATEIDENTIFIERS_HPP
