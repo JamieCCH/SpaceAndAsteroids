@@ -47,18 +47,23 @@ struct PickupData
 	sf::IntRect						textureRect;
 };
 
-#pragma region step 2
+
 struct ParticleData
 {
 	sf::Color						color;
 	sf::Time						lifetime;
 };
 
+struct ExplosionData
+{
+    sf::Color                       color;
+    sf::Time                        lifetime;
+};
 
 std::vector<AircraftData>	initializeAircraftData();
 std::vector<ProjectileData>	initializeProjectileData();
 std::vector<PickupData>		initializePickupData();
 std::vector<ParticleData>	initializeParticleData();
-#pragma endregion
+std::vector<ExplosionData>  initializeExplosionData();
 
 

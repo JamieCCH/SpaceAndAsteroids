@@ -14,10 +14,10 @@ class Player
 	public:
 		enum Action
 		{
+            MoveUp,
+            MoveRight,
+            MoveDown,
 			MoveLeft,
-			MoveRight,
-			MoveUp,
-			MoveDown,
 			Fire,
 			LaunchMissile,
 			ActionCount
@@ -46,7 +46,7 @@ class Player
 	private:
 		void					initializeActions();
 		static bool				isRealtimeAction(Action action);
-
+        void                    changeTexture(Action action);
 
 	private:
 		std::map<sf::Keyboard::Key, Action>		mKeyBinding;

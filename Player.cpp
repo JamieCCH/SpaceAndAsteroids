@@ -42,6 +42,11 @@ Player::Player()
 		pair.second.category = Category::PlayerAircraft;
 }
 
+void Player::changeTexture(Action action)
+{
+    sf::IntRect textureRect(38 * action, 39, 42, 43);
+}
+
 void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
 {
 	if (event.type == sf::Event::KeyPressed)
@@ -118,6 +123,7 @@ bool Player::isRealtimeAction(Action action)
 		case MoveRight:
 		case MoveDown:
 		case MoveUp:
+            
 		case Fire:
 			return true;
 

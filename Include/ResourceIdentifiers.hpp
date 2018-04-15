@@ -13,6 +13,11 @@ namespace Textures
 {
 	enum ID
 	{
+        Spaceship,
+        FireBlue,
+        Rocks,
+        smallRock,
+        
 		Entities,
 		Space,
 		TitleScreen,

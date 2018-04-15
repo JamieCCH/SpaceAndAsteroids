@@ -4,12 +4,13 @@
 #include "Include/Pickup.hpp"
 #include "Include/CommandQueue.hpp"
 #include "Include/ResourceHolder.hpp"
+#include "Include/ExplosionNode.hpp"
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 
 #include <cmath>
-
+#include <iostream>
 
 namespace
 {
@@ -30,6 +31,7 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 , mSpreadLevel(1)
 , mMissileAmmo(2)
 , mDropPickupCommand()
+, mDisplayExplosion()
 , mTravelledDistance(0.f)
 , mDirectionIndex(0)
 , mHealthDisplay(nullptr)
@@ -54,6 +56,12 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 	{
 		createPickup(node, textures);
 	};
+    
+    mDisplayExplosion.category = Category::SceneAirLayer;
+    mDisplayExplosion.action = [this, &textures](SceneNode& node, sf::Time)
+    {
+        createExplosion(node,Explosion::ExplosionTypeA, textures);
+    };
 
 	std::unique_ptr<TextNode> healthDisplay(new TextNode(fonts, ""));
 	mHealthDisplay = healthDisplay.get();
@@ -77,11 +85,14 @@ void Aircraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) co
 
 void Aircraft::updateCurrent(sf::Time dt, CommandQueue& commands)
 {
-	// Entity has been destroyed: Possibly drop pickup, mark for removal
+    //update spaceship texture
+    
+    
+	// Entity has been destroyed: Possibly drop pickup, mark for removal ---------------------------------------
 	if (isDestroyed())
 	{
+        checkExplosion(dt, commands);
 		checkPickupDrop(commands);
-
 		mIsMarkedForRemoval = true;
 		return;
 	}
@@ -117,7 +128,8 @@ bool Aircraft::isMarkedForRemoval() const
 
 bool Aircraft::isAllied() const
 {
-	return mType == Eagle;
+//    return mType == Eagle;
+    return mType == Spaceship;
 }
 
 float Aircraft::getMaxSpeed() const
@@ -185,7 +197,13 @@ void Aircraft::updateMovementPattern(sf::Time dt)
 void Aircraft::checkPickupDrop(CommandQueue& commands)
 {
 	if (!isAllied() && randomInt(3) == 0)
-		commands.push(mDropPickupCommand);
+        commands.push(mDropPickupCommand);
+}
+
+void Aircraft::checkExplosion(sf::Time dt, CommandQueue &commands)
+{
+    commands.push(mDisplayExplosion);
+    std::cout<< "Check Explosion " <<std::endl<<std::endl;
 }
 
 void Aircraft::checkProjectileLaunch(sf::Time dt, CommandQueue& commands)
@@ -246,13 +264,24 @@ void Aircraft::createProjectile(SceneNode& node, Projectile::Type type, float xO
 
 //    sf::Vector2f offset(xOffset * mSprite.getGlobalBounds().width, yOffset * mSprite.getGlobalBounds().height);
 //    sf::Vector2f velocity(0, projectile->getMaxSpeed());
-    sf::Vector2f offset(xOffset * mSprite.getGlobalBounds().width -50.f, yOffset * mSprite.getGlobalBounds().height -30.f);
-    sf::Vector2f velocity(-projectile->getMaxSpeed(),0);
+    sf::Vector2f offset(xOffset * mSprite.getGlobalBounds().width +20.f, yOffset * mSprite.getGlobalBounds().height -20.f);
+    sf::Vector2f velocity(projectile->getMaxSpeed(),0);
 
-	float sign = isAllied() ? -1.f : +1.f;
+	float sign = isAllied() ? +1.f : -1.f;
 	projectile->setPosition(getWorldPosition() + offset * sign);
 	projectile->setVelocity(velocity * sign);
+    projectile->setRotation(getRotation() * sign);
 	node.attachChild(std::move(projectile));
+}
+
+void Aircraft::createExplosion(SceneNode& node, Explosion::Type type, const TextureHolder& textures) const
+{
+    std::unique_ptr<ExplosionNode> ExplosionNode(new class ExplosionNode(Explosion::ExplosionTypeA, textures));
+    ExplosionNode->setPosition(getWorldPosition());
+    ExplosionNode->addExplosion(getPosition());
+    node.attachChild(std::move(ExplosionNode));
+    
+    std::cout<< "create Explosion " <<std::endl<<std::endl;
 }
 
 void Aircraft::createPickup(SceneNode& node, const TextureHolder& textures) const
@@ -267,9 +296,11 @@ void Aircraft::createPickup(SceneNode& node, const TextureHolder& textures) cons
 
 void Aircraft::updateTexts()
 {
-    mHealthDisplay->setString("HP: " + toString(getHitpoints()));
-    mHealthDisplay->setPosition(-50.f, 0.f);
-    mHealthDisplay->setRotation(-getRotation());
+    if(isAllied()){
+        mHealthDisplay->setString("HP: " + toString(getHitpoints()));
+        mHealthDisplay->setPosition(-50.f, 0.f);
+        mHealthDisplay->setRotation(-getRotation());
+    }
 
 	if (mMissileDisplay)
 	{

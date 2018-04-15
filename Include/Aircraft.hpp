@@ -5,6 +5,7 @@
 #include "ResourceIdentifiers.hpp"
 #include "Projectile.hpp"
 #include "TextNode.hpp"
+#include "Explosion.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -14,7 +15,10 @@ class Aircraft : public Entity
 	public:
 		enum Type
 		{
-			Eagle,
+            Spaceship,
+            Asteroid,
+            SmallRock,
+//            Eagle,
 			Raptor,
 			Avenger,
 			TypeCount
@@ -44,10 +48,12 @@ class Aircraft : public Entity
 		void					updateMovementPattern(sf::Time dt);
 		void					checkPickupDrop(CommandQueue& commands);
 		void					checkProjectileLaunch(sf::Time dt, CommandQueue& commands);
+        void                    checkExplosion(sf::Time dt, CommandQueue& commands);
 
 		void					createBullets(SceneNode& node, const TextureHolder& textures) const;
 		void					createProjectile(SceneNode& node, Projectile::Type type, float xOffset, float yOffset, const TextureHolder& textures) const;
 		void					createPickup(SceneNode& node, const TextureHolder& textures) const;
+        void                    createExplosion(SceneNode& node, Explosion::Type type,const TextureHolder& textures) const;
 
 		void					updateTexts();
 
@@ -67,6 +73,7 @@ class Aircraft : public Entity
 		int						mMissileAmmo;
 
 		Command 				mDropPickupCommand;
+        Command                 mDisplayExplosion;
 		float					mTravelledDistance;
 		std::size_t				mDirectionIndex;
 		TextNode*				mHealthDisplay;
