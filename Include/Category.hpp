@@ -18,7 +18,6 @@ namespace Category
 		ParticleSystem = 1 << 7,
 #pragma endregion
         
-        ExplosionSystem = 1 << 8,
 
 		Aircraft = PlayerAircraft | AlliedAircraft | EnemyAircraft,
 		Projectile = AlliedProjectile | EnemyProjectile,

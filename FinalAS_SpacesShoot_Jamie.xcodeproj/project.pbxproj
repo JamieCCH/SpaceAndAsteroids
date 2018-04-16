@@ -11,7 +11,6 @@
 		7D2662E0207C0F8A00371510 /* LoadingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D2662DD207C0F8A00371510 /* LoadingState.cpp */; };
 		7D2662E1207C0F8A00371510 /* ParallelTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D2662DE207C0F8A00371510 /* ParallelTask.cpp */; };
 		7D2662E2207C0F8A00371510 /* PauseState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D2662DF207C0F8A00371510 /* PauseState.cpp */; };
-		7D2CCE91208304020030FDA8 /* ExplosionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D2CCE90208304020030FDA8 /* ExplosionNode.cpp */; };
 		7D3F6A6E207C44EC009DE5A3 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D3F6A6C207C44EC009DE5A3 /* ResourcePath.mm */; };
 		7D3F6A7B207C70B7009DE5A3 /* SettingsState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D3F6A7A207C70B6009DE5A3 /* SettingsState.cpp */; };
 		7D472038207E9B7600E14162 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 7D472037207E9B7600E14162 /* Media */; };
@@ -28,6 +27,7 @@
 		7DAAC8042081E9D000FC2E46 /* GameOverState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC8002081E9CF00FC2E46 /* GameOverState.cpp */; };
 		7DAAC8052081E9D000FC2E46 /* ParticleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC8012081E9D000FC2E46 /* ParticleNode.cpp */; };
 		7DAAC8062081E9D000FC2E46 /* Pickup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DAAC8022081E9D000FC2E46 /* Pickup.cpp */; };
+		7DB11ED920853152003D5CF0 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11ED720853152003D5CF0 /* Animation.cpp */; };
 		7DC48D622050AC19008EC9D7 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC48D612050AC19008EC9D7 /* SceneNode.cpp */; };
 		7DC48D652050B76F008EC9D7 /* Aircraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC48D642050B76F008EC9D7 /* Aircraft.cpp */; };
 		7DC48D682050BAA0008EC9D7 /* SpriteNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DC48D672050BAA0008EC9D7 /* SpriteNode.cpp */; };
@@ -49,7 +49,6 @@
 		7D2662DD207C0F8A00371510 /* LoadingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingState.cpp; sourceTree = "<group>"; };
 		7D2662DE207C0F8A00371510 /* ParallelTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParallelTask.cpp; sourceTree = "<group>"; };
 		7D2662DF207C0F8A00371510 /* PauseState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseState.cpp; sourceTree = "<group>"; };
-		7D2CCE90208304020030FDA8 /* ExplosionNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExplosionNode.cpp; sourceTree = "<group>"; };
 		7D3F6A6A207C44EC009DE5A3 /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		7D3F6A6B207C44EC009DE5A3 /* FinalAS_SpacesShoot_Jamie-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FinalAS_SpacesShoot_Jamie-Info.plist"; sourceTree = "<group>"; };
 		7D3F6A6C207C44EC009DE5A3 /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		7DAAC8002081E9CF00FC2E46 /* GameOverState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverState.cpp; sourceTree = "<group>"; };
 		7DAAC8012081E9D000FC2E46 /* ParticleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleNode.cpp; sourceTree = "<group>"; };
 		7DAAC8022081E9D000FC2E46 /* Pickup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pickup.cpp; sourceTree = "<group>"; };
+		7DB11ED720853152003D5CF0 /* Animation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		7DC48D612050AC19008EC9D7 /* SceneNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneNode.cpp; sourceTree = "<group>"; };
 		7DC48D642050B76F008EC9D7 /* Aircraft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Aircraft.cpp; sourceTree = "<group>"; };
 		7DC48D672050BAA0008EC9D7 /* SpriteNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteNode.cpp; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				7DD03AE4207F011700C41017 /* Include */,
-				7D2CCE90208304020030FDA8 /* ExplosionNode.cpp */,
+				7DB11ED720853152003D5CF0 /* Animation.cpp */,
 				7DC48D642050B76F008EC9D7 /* Aircraft.cpp */,
 				7D2662DB207C0C9300371510 /* Application.cpp */,
 				7DFB2D83207C264000879D41 /* Button.cpp */,
@@ -258,6 +258,7 @@
 				7D910041206304E7006025D8 /* World.cpp in Sources */,
 				7D7FD48C202CE15800D63E75 /* main.cpp in Sources */,
 				7D472040207EB4D800E14162 /* DataTables.cpp in Sources */,
+				7DB11ED920853152003D5CF0 /* Animation.cpp in Sources */,
 				7D91004C206363C8006025D8 /* Player.cpp in Sources */,
 				7D687EC5203E3B6900E8D8A4 /* Entity.cpp in Sources */,
 				7DFB2D80207C258A00879D41 /* Component.cpp in Sources */,
@@ -266,7 +267,6 @@
 				7DC48D682050BAA0008EC9D7 /* SpriteNode.cpp in Sources */,
 				7D3F6A6E207C44EC009DE5A3 /* ResourcePath.mm in Sources */,
 				7D472042207ECCC700E14162 /* Projectile.cpp in Sources */,
-				7D2CCE91208304020030FDA8 /* ExplosionNode.cpp in Sources */,
 				7DAAC8052081E9D000FC2E46 /* ParticleNode.cpp in Sources */,
 				7DC48D652050B76F008EC9D7 /* Aircraft.cpp in Sources */,
 				7DFB2D82207C258A00879D41 /* Label.cpp in Sources */,

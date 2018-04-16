@@ -3,7 +3,6 @@
 #include "Include/Projectile.hpp"
 #include "Include/Pickup.hpp"
 #include "Include/Particle.hpp"
-#include "Include/Explosion.hpp"
 
 #include <ctime>
 #include <iostream>
@@ -25,11 +24,6 @@ std::vector<AircraftData> initializeAircraftData()
     data[Aircraft::Spaceship].textureRect = sf::IntRect(38, 39, 42, 43); //big particle
 //    data[Aircraft::Spaceship].textureRect = sf::IntRect(38, 85, 42, 40); //small particle
     
-//    data[Aircraft::Eagle].hitpoints = 100;
-//    data[Aircraft::Eagle].speed = 200.f;
-//    data[Aircraft::Eagle].fireInterval = sf::seconds(1);
-//    data[Aircraft::Eagle].texture = Textures::Entities;
-//    data[Aircraft::Eagle].textureRect = sf::IntRect(0, 0, 48, 64);
     
     data[Aircraft::Asteroid].hitpoints = 20;
     data[Aircraft::Asteroid].speed = 60.f;
@@ -47,9 +41,9 @@ std::vector<AircraftData> initializeAircraftData()
     data[Aircraft::SmallRock].texture = Textures::smallRock;
     data[Aircraft::SmallRock].textureRect = sf::IntRect(0,0,60,60);
     data[Aircraft::SmallRock].directions.push_back(Direction(0.f, 80.f));
-    data[Aircraft::SmallRock].directions.push_back(Direction(-25.f, 120.f));
-    data[Aircraft::SmallRock].directions.push_back(Direction(+25.f, 50.f));
-    data[Aircraft::SmallRock].directions.push_back(Direction(-35.f, 100.f));
+    data[Aircraft::SmallRock].directions.push_back(Direction(-55.f, 120.f));
+    data[Aircraft::SmallRock].directions.push_back(Direction(+65.f, 150.f));
+    data[Aircraft::SmallRock].directions.push_back(Direction(-45.f, 100.f));
     
     
     //    int ranAngle = sf::Randomizer::Random(-10,80);
@@ -140,13 +134,5 @@ std::vector<ParticleData> initializeParticleData()
 	return data;
 }
 
-std::vector<ExplosionData> initializeExplosionData()
-{
-    std::vector<ExplosionData> data(Explosion::ExplosionCount);
-    
-    data[Explosion::ExplosionTypeA].color = sf::Color(255, 255, 50);
-    data[Explosion::ExplosionTypeA].lifetime = sf::seconds(1.2f);
-    
-    return data;
-}
+
 

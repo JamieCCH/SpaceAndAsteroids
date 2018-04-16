@@ -3,7 +3,6 @@
 #include "Include/Pickup.hpp"
 #include "Include/TextNode.hpp"
 #include "Include/ParticleNode.hpp"
-#include "Include/ExplosionNode.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
@@ -12,8 +11,10 @@
 #include <limits>
 
 #include "ResourcePath.hpp"
-
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
 
 World::World(sf::RenderWindow& window, FontHolder& fonts)
 : mWindow(window)
@@ -23,7 +24,7 @@ World::World(sf::RenderWindow& window, FontHolder& fonts)
 , mSceneGraph()
 , mSceneLayers()
 //, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 2000.f)
-, mWorldBounds(0.f, 0.f, 2000.f, mWorldView.getSize().y)
+, mWorldBounds(0.f, 0.f, 1600.f, mWorldView.getSize().y)
 //, mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y)
 , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f)
 , mScrollSpeed(50.f)
@@ -94,8 +95,7 @@ void World::loadTextures()
 {
 	mTextures.load(Textures::Entities, resourcePath()+"Media/Textures/Entities.png");
 	mTextures.load(Textures::Space, resourcePath()+"Media/Textures/Space.jpg");
-//    mTextures.load(Textures::Explosion, resourcePath()+"Media/Textures/type_A.png");
-    mTextures.load(Textures::Explosion, resourcePath()+"Media/Textures/000test.png ");
+    mTextures.load(Textures::Explosion, resourcePath()+"Media/Textures/Explosion.png");
 	mTextures.load(Textures::Particle, resourcePath()+"Media/Textures/Particle.png");
 	mTextures.load(Textures::FinishLine, resourcePath()+"Media/Textures/FinishLine.png");
     
@@ -229,15 +229,6 @@ void World::buildScene()
 	std::unique_ptr<ParticleNode> propellantNode(new ParticleNode(Particle::Propellant, mTextures));
 	mSceneLayers[LowerAir]->attachChild(std::move(propellantNode));
     
-    // Add Explosion node to the scene
-    std::unique_ptr<ExplosionNode> ExplosionNode(new class ExplosionNode(Explosion::ExplosionTypeA, mTextures));
-    mSceneLayers[LowerAir]->attachChild(std::move(ExplosionNode));
-
-	// Add player's aircraft
-//    std::unique_ptr<Aircraft> player(new Aircraft(Aircraft::Eagle, mTextures, mFonts));
-//    mPlayerAircraft = player.get();
-//    mPlayerAircraft->setPosition(mSpawnPosition);
-//    mSceneLayers[UpperAir]->attachChild(std::move(player));
 
     std::unique_ptr<Aircraft> player(new Aircraft(Aircraft::Spaceship, mTextures, mFonts));
     mPlayerAircraft = player.get();
@@ -263,18 +254,38 @@ void World::addEnemies()
     addEnemy(Aircraft::Asteroid, 450.f, 10.f);
     addEnemy(Aircraft::Asteroid, 499.f, -150.f);
     
-    addEnemy(Aircraft::SmallRock, 20.f, -150.f);
-    addEnemy(Aircraft::SmallRock, 220.f, 150.f);
-    addEnemy(Aircraft::SmallRock, 390.f, -400.f);
-    addEnemy(Aircraft::SmallRock, 80.f, 50.f);
-    addEnemy(Aircraft::SmallRock, 0.f, 10.f);
-    addEnemy(Aircraft::SmallRock, 70.f, -30.f);
-    addEnemy(Aircraft::SmallRock, 0.f, 230.f);
-    addEnemy(Aircraft::SmallRock, 190.f, -100.f);
-    addEnemy(Aircraft::SmallRock, 460.f, 210.f);
-    addEnemy(Aircraft::SmallRock, 210.f, -210.f);
-    addEnemy(Aircraft::SmallRock, 160.f, -310.f);
-    addEnemy(Aircraft::SmallRock, 460.f, -50.f);
+//    addEnemy(Aircraft::SmallRock, 20.f, -150.f);
+//    addEnemy(Aircraft::SmallRock, 220.f, 150.f);
+//    addEnemy(Aircraft::SmallRock, 390.f, -400.f);
+//    addEnemy(Aircraft::SmallRock, 80.f, 50.f);
+//    addEnemy(Aircraft::SmallRock, 0.f, 10.f);
+//    addEnemy(Aircraft::SmallRock, 70.f, -30.f);
+//    addEnemy(Aircraft::SmallRock, 0.f, 230.f);
+//    addEnemy(Aircraft::SmallRock, 190.f, -100.f);
+//    addEnemy(Aircraft::SmallRock, 460.f, 210.f);
+//    addEnemy(Aircraft::SmallRock, 210.f, -210.f);
+//    addEnemy(Aircraft::SmallRock, 160.f, -310.f);
+//    addEnemy(Aircraft::SmallRock, 460.f, -50.f);
+    
+
+    srand(time(NULL));
+    
+    int rockNum = rand()%50 +50;
+    
+    float mX = 10.f;
+    float mY = (rand()&350)-350;
+    std::cout<< "rockNum "<<rockNum<<std::endl<<std::endl;
+    std::cout<< "position y: "<<mY<<std::endl<<std::endl;
+    
+    for(int i = 0; i<= rockNum; i++)
+    {
+        mX = rand()&500;
+        mY = (rand()&350)-350;
+        addEnemy(Aircraft::SmallRock, mX, mY);
+        std::cout<< "position x / y: "<<mX<<"/"<<mY<<std::endl<<std::endl;
+    }
+    
+   
     
 	// Sort all enemies according to their y value, such that lower enemies are checked first for spawning
 	std::sort(mEnemySpawnPoints.begin(), mEnemySpawnPoints.end(), [] (SpawnPoint lhs, SpawnPoint rhs)
@@ -314,7 +325,7 @@ void World::spawnEnemies()
 void World::destroyEntitiesOutsideView()
 {
 	Command command;
-	command.category = Category::Projectile | Category::EnemyAircraft | Category::ExplosionSystem;
+	command.category = Category::Projectile | Category::EnemyAircraft;
 	command.action = derivedAction<Entity>([this] (Entity& e, sf::Time)
 	{
 		if (!getBattlefieldBounds().intersects(e.getBoundingRect()))

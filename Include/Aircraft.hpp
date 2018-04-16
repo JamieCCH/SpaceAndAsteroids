@@ -5,7 +5,8 @@
 #include "ResourceIdentifiers.hpp"
 #include "Projectile.hpp"
 #include "TextNode.hpp"
-#include "Explosion.hpp"
+//#include "Explosion.hpp"
+#include "Animation.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -33,6 +34,7 @@ class Aircraft : public Entity
 		virtual bool 			isMarkedForRemoval() const;
 		bool					isAllied() const;
 		float					getMaxSpeed() const;
+        virtual void            remove();
 
 		void					increaseFireRate();
 		void					increaseSpread();
@@ -48,17 +50,19 @@ class Aircraft : public Entity
 		void					updateMovementPattern(sf::Time dt);
 		void					checkPickupDrop(CommandQueue& commands);
 		void					checkProjectileLaunch(sf::Time dt, CommandQueue& commands);
-        void                    checkExplosion(sf::Time dt, CommandQueue& commands);
+//        void                    checkExplosion(sf::Time dt, CommandQueue& commands);
 
 		void					createBullets(SceneNode& node, const TextureHolder& textures) const;
 		void					createProjectile(SceneNode& node, Projectile::Type type, float xOffset, float yOffset, const TextureHolder& textures) const;
 		void					createPickup(SceneNode& node, const TextureHolder& textures) const;
-        void                    createExplosion(SceneNode& node, Explosion::Type type,const TextureHolder& textures) const;
+//        void                    createExplosion(SceneNode& node, Explosion::Type type,const TextureHolder& textures) const;
 
 		void					updateTexts();
+        void                    updateRollAnimation();
 
 
 	private:
+        Animation               mExplosion;
 		Type					mType;
 		sf::Sprite				mSprite;
 		Command 				mFireCommand;
@@ -67,6 +71,7 @@ class Aircraft : public Entity
 		bool 					mIsFiring;
 		bool					mIsLaunchingMissile;
 		bool 					mIsMarkedForRemoval;
+        bool                    mShowExplosion;
 
 		int						mFireRateLevel;
 		int						mSpreadLevel;

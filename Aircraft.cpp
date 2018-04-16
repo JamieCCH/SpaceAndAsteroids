@@ -4,7 +4,6 @@
 #include "Include/Pickup.hpp"
 #include "Include/CommandQueue.hpp"
 #include "Include/ResourceHolder.hpp"
-#include "Include/ExplosionNode.hpp"
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -27,6 +26,7 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 , mIsFiring(false)
 , mIsLaunchingMissile(false)
 , mIsMarkedForRemoval(false)
+, mShowExplosion(true)
 , mFireRateLevel(1)
 , mSpreadLevel(1)
 , mMissileAmmo(2)
@@ -36,8 +36,14 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 , mDirectionIndex(0)
 , mHealthDisplay(nullptr)
 , mMissileDisplay(nullptr)
+, mExplosion(textures.get(Textures::Explosion))
 {
+    mExplosion.setFrameSize(sf::Vector2i(256, 256));
+    mExplosion.setNumFrames(16);
+    mExplosion.setDuration(sf::seconds(1));
+    
 	centerOrigin(mSprite);
+    centerOrigin(mExplosion);
 
 	mFireCommand.category = Category::SceneAirLayer;
 	mFireCommand.action   = [this, &textures] (SceneNode& node, sf::Time)
@@ -57,11 +63,11 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 		createPickup(node, textures);
 	};
     
-    mDisplayExplosion.category = Category::SceneAirLayer;
-    mDisplayExplosion.action = [this, &textures](SceneNode& node, sf::Time)
-    {
-        createExplosion(node,Explosion::ExplosionTypeA, textures);
-    };
+//    mDisplayExplosion.category = Category::SceneAirLayer;
+//    mDisplayExplosion.action = [this, &textures](SceneNode& node, sf::Time)
+//    {
+//        createExplosion(node,Explosion::ExplosionTypeA, textures);
+//    };
 
 	std::unique_ptr<TextNode> healthDisplay(new TextNode(fonts, ""));
 	mHealthDisplay = healthDisplay.get();
@@ -80,7 +86,10 @@ Aircraft::Aircraft(Type type, const TextureHolder& textures, const FontHolder& f
 
 void Aircraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(mSprite, states);
+    if (isDestroyed() && mShowExplosion)
+        target.draw(mExplosion, states);
+    else
+        target.draw(mSprite, states);
 }
 
 void Aircraft::updateCurrent(sf::Time dt, CommandQueue& commands)
@@ -91,9 +100,9 @@ void Aircraft::updateCurrent(sf::Time dt, CommandQueue& commands)
 	// Entity has been destroyed: Possibly drop pickup, mark for removal ---------------------------------------
 	if (isDestroyed())
 	{
-        checkExplosion(dt, commands);
-		checkPickupDrop(commands);
+//        checkPickupDrop(commands);
 		mIsMarkedForRemoval = true;
+        mExplosion.update(dt);
 		return;
 	}
 
@@ -123,7 +132,13 @@ sf::FloatRect Aircraft::getBoundingRect() const
 
 bool Aircraft::isMarkedForRemoval() const
 {
-	return mIsMarkedForRemoval;
+	return isDestroyed() && (mExplosion.isFinished() || !mShowExplosion);
+}
+
+void Aircraft::remove()
+{
+    Entity::remove();
+    mShowExplosion = false;
 }
 
 bool Aircraft::isAllied() const
@@ -200,11 +215,6 @@ void Aircraft::checkPickupDrop(CommandQueue& commands)
         commands.push(mDropPickupCommand);
 }
 
-void Aircraft::checkExplosion(sf::Time dt, CommandQueue &commands)
-{
-    commands.push(mDisplayExplosion);
-    std::cout<< "Check Explosion " <<std::endl<<std::endl;
-}
 
 void Aircraft::checkProjectileLaunch(sf::Time dt, CommandQueue& commands)
 {
@@ -274,15 +284,6 @@ void Aircraft::createProjectile(SceneNode& node, Projectile::Type type, float xO
 	node.attachChild(std::move(projectile));
 }
 
-void Aircraft::createExplosion(SceneNode& node, Explosion::Type type, const TextureHolder& textures) const
-{
-    std::unique_ptr<ExplosionNode> ExplosionNode(new class ExplosionNode(Explosion::ExplosionTypeA, textures));
-    ExplosionNode->setPosition(getWorldPosition());
-    ExplosionNode->addExplosion(getPosition());
-    node.attachChild(std::move(ExplosionNode));
-    
-    std::cout<< "create Explosion " <<std::endl<<std::endl;
-}
 
 void Aircraft::createPickup(SceneNode& node, const TextureHolder& textures) const
 {

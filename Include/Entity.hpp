@@ -20,6 +20,7 @@ class Entity : public SceneNode
 		void				damage(int points);
 		void				destroy();
 		virtual bool		isDestroyed() const;
+        virtual void        remove();
 
 
 	protected:

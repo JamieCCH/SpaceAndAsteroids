@@ -54,16 +54,12 @@ struct ParticleData
 	sf::Time						lifetime;
 };
 
-struct ExplosionData
-{
-    sf::Color                       color;
-    sf::Time                        lifetime;
-};
+
 
 std::vector<AircraftData>	initializeAircraftData();
 std::vector<ProjectileData>	initializeProjectileData();
 std::vector<PickupData>		initializePickupData();
 std::vector<ParticleData>	initializeParticleData();
-std::vector<ExplosionData>  initializeExplosionData();
+
 
 
