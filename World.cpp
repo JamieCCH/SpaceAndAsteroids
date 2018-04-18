@@ -24,7 +24,7 @@ World::World(sf::RenderWindow& window, FontHolder& fonts)
 , mSceneGraph()
 , mSceneLayers()
 //, mWorldBounds(0.f, 0.f, mWorldView.getSize().x, 2000.f)
-, mWorldBounds(0.f, 0.f, 1600.f, mWorldView.getSize().y)
+, mWorldBounds(0.f, 0.f, 1500.f, mWorldView.getSize().y)
 //, mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldBounds.height - mWorldView.getSize().y)
 , mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f)
 , mScrollSpeed(50.f)
@@ -243,6 +243,23 @@ void World::addEnemies()
 {
 	// Add enemies to the spawn point container 0<x<500
     
+//    srand(time(NULL));
+//
+//    int rockNum = rand()%30 +30;
+//
+//    float mX = 10.f;
+//    float mY = 0.f;
+//    std::cout<< "rockNum "<<rockNum<<std::endl<<std::endl;
+//    std::cout<< "position y: "<<mY<<std::endl<<std::endl;
+//
+//    for(int i = 0; i<= rockNum; i++)
+//    {
+//        mX = rand()&500;
+//        mY = (rand()&350)-200;
+//        addEnemy(Aircraft::SmallRock, mX, mY);
+//        std::cout<< "position x / y: "<<mX<<"/"<<mY<<std::endl<<std::endl;
+//    }
+    
     addEnemy(Aircraft::Asteroid, 0.f, 0.f);
     addEnemy(Aircraft::Asteroid, 5.f, 320.f);
     addEnemy(Aircraft::Asteroid, 260.f, 50.f);
@@ -254,38 +271,19 @@ void World::addEnemies()
     addEnemy(Aircraft::Asteroid, 450.f, 10.f);
     addEnemy(Aircraft::Asteroid, 499.f, -150.f);
     
-//    addEnemy(Aircraft::SmallRock, 20.f, -150.f);
-//    addEnemy(Aircraft::SmallRock, 220.f, 150.f);
-//    addEnemy(Aircraft::SmallRock, 390.f, -400.f);
-//    addEnemy(Aircraft::SmallRock, 80.f, 50.f);
-//    addEnemy(Aircraft::SmallRock, 0.f, 10.f);
-//    addEnemy(Aircraft::SmallRock, 70.f, -30.f);
-//    addEnemy(Aircraft::SmallRock, 0.f, 230.f);
-//    addEnemy(Aircraft::SmallRock, 190.f, -100.f);
-//    addEnemy(Aircraft::SmallRock, 460.f, 210.f);
-//    addEnemy(Aircraft::SmallRock, 210.f, -210.f);
-//    addEnemy(Aircraft::SmallRock, 160.f, -310.f);
-//    addEnemy(Aircraft::SmallRock, 460.f, -50.f);
+    addEnemy(Aircraft::SmallRock, 20.f, -150.f);
+    addEnemy(Aircraft::SmallRock, 220.f, 150.f);
+    addEnemy(Aircraft::SmallRock, 390.f, -400.f);
+    addEnemy(Aircraft::SmallRock, 80.f, 50.f);
+    addEnemy(Aircraft::SmallRock, 0.f, 10.f);
+    addEnemy(Aircraft::SmallRock, 70.f, -30.f);
+    addEnemy(Aircraft::SmallRock, 0.f, 230.f);
+    addEnemy(Aircraft::SmallRock, 190.f, -100.f);
+    addEnemy(Aircraft::SmallRock, 460.f, 210.f);
+    addEnemy(Aircraft::SmallRock, 210.f, -210.f);
+    addEnemy(Aircraft::SmallRock, 160.f, -310.f);
+    addEnemy(Aircraft::SmallRock, 460.f, -50.f);
     
-
-    srand(time(NULL));
-    
-    int rockNum = rand()%50 +50;
-    
-    float mX = 10.f;
-    float mY = (rand()&350)-350;
-    std::cout<< "rockNum "<<rockNum<<std::endl<<std::endl;
-    std::cout<< "position y: "<<mY<<std::endl<<std::endl;
-    
-    for(int i = 0; i<= rockNum; i++)
-    {
-        mX = rand()&500;
-        mY = (rand()&350)-350;
-        addEnemy(Aircraft::SmallRock, mX, mY);
-        std::cout<< "position x / y: "<<mX<<"/"<<mY<<std::endl<<std::endl;
-    }
-    
-   
     
 	// Sort all enemies according to their y value, such that lower enemies are checked first for spawning
 	std::sort(mEnemySpawnPoints.begin(), mEnemySpawnPoints.end(), [] (SpawnPoint lhs, SpawnPoint rhs)

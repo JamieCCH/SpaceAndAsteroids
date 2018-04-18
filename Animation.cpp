@@ -115,21 +115,16 @@ void Animation::update(sf::Time dt)
     if (mCurrentFrame == 0)
         textureRect = sf::IntRect(0, 0, mFrameSize.x, mFrameSize.y);
     
-    // While we have a frame to process
     while (mElapsedTime >= timePerFrame && (mCurrentFrame <= mNumFrames || mRepeat))
     {
-        // Move the texture rect left
         textureRect.left += textureRect.width;
         
-        // If we reach the end of the texture
         if (textureRect.left + textureRect.width > textureBounds.x)
         {
-            // Move it down one line
             textureRect.left = 0;
             textureRect.top += textureRect.height;
         }
         
-        // And progress to next frame
         mElapsedTime -= timePerFrame;
         if (mRepeat)
         {

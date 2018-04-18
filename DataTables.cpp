@@ -24,17 +24,16 @@ std::vector<AircraftData> initializeAircraftData()
     data[Aircraft::Spaceship].textureRect = sf::IntRect(38, 39, 42, 43); //big particle
 //    data[Aircraft::Spaceship].textureRect = sf::IntRect(38, 85, 42, 40); //small particle
     
-    
     data[Aircraft::Asteroid].hitpoints = 20;
     data[Aircraft::Asteroid].speed = 60.f;
     data[Aircraft::Asteroid].texture = Textures::Rocks;
     data[Aircraft::Asteroid].textureRect = sf::IntRect(0,0,63,64);
 
     data[Aircraft::Asteroid].directions.push_back(Direction(+45.f, 150.f));
-    data[Aircraft::Asteroid].directions.push_back(Direction(0.f, 50.f));
+    data[Aircraft::Asteroid].directions.push_back(Direction(0.f, 80.f));
     data[Aircraft::Asteroid].directions.push_back(Direction(-45.f, 100.f));
-    data[Aircraft::Asteroid].directions.push_back(Direction(0.f, 50.f));
-    data[Aircraft::Asteroid].directions.push_back(Direction(+45.f, 100.f));
+    data[Aircraft::Asteroid].directions.push_back(Direction(0.f, 60.f));
+    data[Aircraft::Asteroid].directions.push_back(Direction(+45.f, 120.f));
     
     data[Aircraft::SmallRock].hitpoints = 10;
     data[Aircraft::SmallRock].speed = 80.f;

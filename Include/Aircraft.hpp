@@ -5,7 +5,6 @@
 #include "ResourceIdentifiers.hpp"
 #include "Projectile.hpp"
 #include "TextNode.hpp"
-//#include "Explosion.hpp"
 #include "Animation.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
